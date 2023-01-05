@@ -77,6 +77,7 @@ injectScript = () => {
         addFieldIfNotExists(`.invalidCNPJ`, element.currentTarget);
 
         if (!validarCNPJ(clearCnpj)) {
+          jQuery('._submit').attr('disabled', true)
           return jQuery(element.currentTarget)
             .parent()
             .parent()
@@ -85,6 +86,7 @@ injectScript = () => {
         }
 
         if (cnpj === "") {
+          jQuery('._submit').attr('disabled', true)
           return jQuery(element.currentTarget)
             .parent()
             .parent()
@@ -93,6 +95,7 @@ injectScript = () => {
         }
 
         if (clearCnpj.length != 14) {
+          jQuery('._submit').attr('disabled', true)
           return jQuery(element.currentTarget)
             .parent()
             .parent()
@@ -101,12 +104,14 @@ injectScript = () => {
         }
 
         if (!validarCNPJ(clearCnpj)) {
+          jQuery('._submit').attr('disabled', true)
           return jQuery(element.currentTarget)
             .parent()
             .parent()
             .find(".invalidCNPJ")
             .show();
         }
+        jQuery('._submit').removeAttr( 'disabled' )
       });
       clearInterval(interval);
     } catch (error) {
