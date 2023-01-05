@@ -70,7 +70,7 @@ injectScript = () => {
       if (typeof jQuery === "undefined")
         throw new Error("jQuery is not defined");
       console.log(jQuery('[data-name="cnpj"]').val());
-      $(document).on("focusout", '[data-name="cnpj"]', (element) => {
+      $('body').on("focusout", '[data-name="cnpj"]', (element) => {
         const cnpj = jQuery(element.currentTarget).val();
         const clearCnpj = cnpj.replace(/[^\d]+/g, "");
 
