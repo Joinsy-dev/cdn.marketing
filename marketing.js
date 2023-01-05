@@ -115,6 +115,7 @@ injectScript = () => {
       });
       clearInterval(interval);
     } catch (error) {
+      console.log(error);
       console.log(`ignore`);
     }
   }, 500);
