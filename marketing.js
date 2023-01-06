@@ -1,5 +1,4 @@
 validarCNPJ = (cnpj) => {
-  cnpj = cnpj.split('.').join('').split('/').join('').split('-').join('');
 
   if (cnpj == "") return false;
 
@@ -70,9 +69,22 @@ injectScript = () => {
       if (typeof jQuery === "undefined")
         throw new Error("jQuery is not defined");
       console.log(jQuery('[data-name="cnpj"]').val());
-      $('body').on("focusout", '[data-name="cnpj"]', (element) => {
-        const cnpj = jQuery(element.currentTarget).val();
+      
+      
+      
+      
+      
+      $('body').on("focusout", '[data-name="fullname"]', (element) => {
+          const name = jQuery(element.currentTarget).val();
+          if( name.match(/[^a-zA-Z ]/) != null ){
+            jQuery('._submit').attr('disabled', true)
+          }
+      })
         
+        $('body').on("focusout", '[data-name="cnpj"]', (element) => {
+        const cnpj = jQuery(element.currentTarget).val();
+        cnpj = cnpj.split('.').join('').split('/').join('').split('-').join('');
+
         addFieldIfNotExists(`.invalidCNPJ`, element.currentTarget);
 
         if (!validarCNPJ(cnpj)) {
