@@ -65,7 +65,7 @@ addFieldIfNotExists = (selectorField, element) => {
 };
 
 injectScript = () => {
-  const interval = setTimeout(() => {
+  const interval = setInterval(() => {
     try {
       if (typeof jQuery === "undefined")
         throw new Error("jQuery is not defined");
