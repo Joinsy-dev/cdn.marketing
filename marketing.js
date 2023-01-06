@@ -1,5 +1,5 @@
 validarCNPJ = (cnpj) => {
-  cnpj = cnpj.replace(/[^\d]+/g, "");
+  cnpj = cnpj.split('.').join('').split('/').join('').split('-').join('');
 
   if (cnpj == "") return false;
 
@@ -72,11 +72,10 @@ injectScript = () => {
       console.log(jQuery('[data-name="cnpj"]').val());
       $('body').on("focusout", '[data-name="cnpj"]', (element) => {
         const cnpj = jQuery(element.currentTarget).val();
-        const clearCnpj = cnpj.replace(/[^\d]+/g, "");
-
+        
         addFieldIfNotExists(`.invalidCNPJ`, element.currentTarget);
 
-        if (!validarCNPJ(clearCnpj)) {
+        if (!validarCNPJ(cnpj)) {
           jQuery('._submit').attr('disabled', true)
           return jQuery(element.currentTarget)
             .parent()
@@ -94,7 +93,7 @@ injectScript = () => {
             .show();
         }
 
-        if (clearCnpj.length != 14) {
+        if (cnpj.length != 14) {
           jQuery('._submit').attr('disabled', true)
           return jQuery(element.currentTarget)
             .parent()
@@ -103,7 +102,7 @@ injectScript = () => {
             .show();
         }
 
-        if (!validarCNPJ(clearCnpj)) {
+        if (!validarCNPJ(cnpj)) {
           jQuery('._submit').attr('disabled', true)
           return jQuery(element.currentTarget)
             .parent()
