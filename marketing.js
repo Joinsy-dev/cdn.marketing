@@ -79,7 +79,7 @@ injectScript = () => {
           
           
           const fone = jQuery('[data-name="phone"]').val().split('(').join('').split(')').join('').split('-').join('').split(' ').join('');
-          if( fone.length === 11 ? fone.match(/(\d{2})(\d{5})(\d{4})/) : fone.match(/(\d{2})(\d{4})(\d{4})/) == null ){
+          if( fone.length > 11 ||  fone.length === 11 ? fone.match(/(\d{2})(\d{5})(\d{4})/) : fone.match(/(\d{2})(\d{4})(\d{4})/) == null ){
             jQuery('._submit').attr('disabled', true)
             return;
           }
