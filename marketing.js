@@ -113,6 +113,7 @@ injectScript = () => {
         }
         jQuery('._submit').removeAttr( 'disabled' )
       });
+      console.log('COMPLETE')
       clearInterval(interval);
     } catch (error) {
       console.log(error);
