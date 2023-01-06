@@ -69,13 +69,23 @@ injectScript = () => {
       if (typeof jQuery === "undefined")
         throw new Error("jQuery is not defined");
         
-        $('body').on("focusout", '[data-name="cnpj"],[data-name="fullname"]', (element) => {
+        $('body').on("focusout", '[data-name="cnpj"],[data-name="fullname"],[data-name="phone"]', (element) => {
         
           const name = jQuery('[data-name="fullname"]').val();
           if( name.match(/[^a-zA-Z ]/) != null ){
             jQuery('._submit').attr('disabled', true)
             return;
           }
+          
+          
+          const fone = jQuery('[data-name="phone"]').val().split('(').join('').split(')').join('').split('-').join('').split(' ').join('');
+          if( fone.length === 11 ? fone.match(/(\d{2})(\d{5})(\d{4})/) : fone.match(/(\d{2})(\d{4})(\d{4})/) == null ){
+            jQuery('._submit').attr('disabled', true)
+            return;
+          }
+          
+          
+          
           
         const cnpj = jQuery('[data-name="cnpj"]').val().split('.').join('').split('/').join('').split('-').join('');
         
