@@ -82,9 +82,8 @@ injectScript = () => {
       })
         
         $('body').on("focusout", '[data-name="cnpj"]', (element) => {
-        const cnpj = jQuery(element.currentTarget).val();
-        cnpj = cnpj.split('.').join('').split('/').join('').split('-').join('');
-
+        const cnpj = jQuery(element.currentTarget).val().split('.').join('').split('/').join('').split('-').join('');
+        
         addFieldIfNotExists(`.invalidCNPJ`, element.currentTarget);
 
         if (!validarCNPJ(cnpj)) {
