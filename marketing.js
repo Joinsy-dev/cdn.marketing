@@ -72,7 +72,7 @@ injectScript = () => {
         $('body').on("focusout", '[data-name="cnpj"],[data-name="fullname"],[data-name="phone"]', (element) => {
         
           const name = jQuery('[data-name="fullname"]').val();
-          if( name.match(/[^a-zA-Z ]/) != null ){
+          if( name.match(/[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëÇçðÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž ]/) != null ){
             jQuery('._submit').attr('disabled', true)
             return;
           }
