@@ -69,7 +69,7 @@ injectScript = () => {
       if (typeof jQuery === "undefined")
         throw new Error("jQuery is not defined");
         
-        $('body').on("focusout", '[data-name="cnpj"],[data-name="fullname"],[data-name="phone"]', (element) => {
+        $('body').on("focusout", '[data-name="cnpj"],[data-name="field\[1\]"],[data-name="fullname"],[data-name="phone"]', (element) => {
         
           const name = jQuery('[data-name="fullname"]').val();
           if( name.match(/[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëÇçðÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž ]/) != null ){
@@ -87,7 +87,7 @@ injectScript = () => {
           
           
           
-        const cnpj = jQuery('[data-name="cnpj"]').val().split('.').join('').split('/').join('').split('-').join('');
+        const cnpj = jQuery('[data-name="cnpj"],[data-name="field\[1\]"]').val().split('.').join('').split('/').join('').split('-').join('');
         
         addFieldIfNotExists(`.invalidCNPJ`, element.currentTarget);
 
